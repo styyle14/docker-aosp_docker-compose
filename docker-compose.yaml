@@ -1,0 +1,16 @@
+version: '2'
+services:
+   aosp:
+      build:
+         context: ./build
+         dockerfile: Dockerfile
+      image: aosp:latest
+      network_mode: "host"
+      entry_point: /bin/bash
+      volumes:
+         - type: bind
+           source: ./run/ccache
+           target: /home/aosp/.ccache
+         - type: bind
+           source: ./run/workspace
+           target: /home/aosp/workspace
