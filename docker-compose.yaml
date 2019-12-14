@@ -13,6 +13,9 @@ services:
       entrypoint: /bin/bash
       volumes:
          - type: bind
+           source: ${DOCKER_VOLUME_CCACHE_PATH:-./run/cache}
+           target: /home/${DOCKER_IMAGE_USERNAME:-aosp}/.cache
+         - type: bind
            source: ${DOCKER_VOLUME_CCACHE_PATH:-./run/ccache}
            target: /home/${DOCKER_IMAGE_USERNAME:-aosp}/.ccache
          - type: bind
